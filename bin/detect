@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+ymlFilesArray=$(find ./ -maxdepth 1 -regex ".*.[yml|yaml]" | grep -v '^$')
+if [ ${#ymlFilesArray[@]} -eq 0 ]; then
+  exit 100
+fi
