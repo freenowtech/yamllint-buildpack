@@ -37,4 +37,4 @@ pip3 install yamllint
 echo "---> Validating yaml/yml files"
 yamllint -c "$BP_DIR/config/yamllint-config" $BUILD_DIR
 
-echo "---> [success] Yaml/yaml validation"
+echo "---> [success] yaml/yml validation"
