@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
+# bin/test <build-dir> <env-dir>
 set -eo pipefail
 
-echo "---> yamllint Buildpack"
+echo "---> yamllint check..."
+
+
 
 # GET ARGS
+BP_DIR=$(cd $(dirname $0)/..; pwd) # absolute path
+BUILD_DIR=$1
+ENV_DIR=$2
+
+
+echo "---> BP_DIR: $BP_DIR"
+echo "---> BP_DIR: $ENV_DIR"
+
 layersdir=$1
 
-# GET VAR
-buildpackdir=$(dirname "$(readlink -f "${BASH_SOURCE%/*}")")
 
 # CREATE THE LAYER DIRECTORY
 pythonlayer="$layersdir"/python
@@ -32,6 +41,6 @@ pip3 install yamllint
 
 # RUN YAMLLINT
 echo "---> Validating yaml/yml files"
-yamllint -c "$buildpackdir/config/yamllint-config" .
+yamllint -c "$BP_DIR/config/yamllint-config" .
 
 echo "---> [success] Yaml/yaml validation"
