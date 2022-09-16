@@ -3,5 +3,9 @@ set -eo pipefail
 
 ymlFilesArray=$(find ./ -maxdepth 1 -regex ".*.[yml|yaml]" | grep -v '^$')
 if [ ${#ymlFilesArray[@]} -eq 0 ]; then
-  exit 100
+  echo "freenow/yamllint"
+  exit 0
+else 
+  (>&2 echo "Could not find yaml/yml files")
+  exit 1
 fi
