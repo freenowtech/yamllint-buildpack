@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
-
+ls ${1:?}
 ymlFilesArray=$(find ${1:?} -maxdepth 1 -regex ".*.[yml|yaml]" | grep -v '^$')
 if [ ${#ymlFilesArray[@]} -eq 0 ]; then
   echo "freenow/yamllint"
