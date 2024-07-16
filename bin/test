@@ -18,7 +18,7 @@ mkdir -p "$pythonlayer"
 
 # DOWNLOAD PYTHON
 echo "---> Downloading and extracting Python"
-python_url=https://s3-external-1.amazonaws.com/heroku-buildpack-python/archive/heroku-18/runtimes/python-3.10.0.tar.gz
+python_url=https://s3-external-1.amazonaws.com/heroku-buildpack-python/heroku-20/runtimes/python-3.10.0.tar.gz
 wget -q -O - "$python_url" | tar -xzf - -C "$pythonlayer"
 
 # MAKE PYTHON AVAILABLE TO THIS SCRIPT
