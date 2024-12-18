@@ -4,3 +4,4 @@ rules:
   empty-lines: disable
   trailing-spaces: disable
   indentation: disable
+  key-duplicates: enable
