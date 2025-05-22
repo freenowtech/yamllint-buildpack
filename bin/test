@@ -14,9 +14,7 @@ ENV_DIR=$2
 pythonlayer="$ENV_DIR"/python
 mkdir -p "$pythonlayer"
 
-
-
-# Download and install Miniconda (Python 3.10)
+# Download and install Miniconda
 miniconda_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 conda_dir="$ENV_DIR/miniconda"
 wget -qO miniconda.sh "$miniconda_url"
@@ -27,19 +25,9 @@ rm miniconda.sh
 # CREATE PYTHON ENVIRONMENT
 conda create -y -p "$pythonlayer" python=3.10
 
-
-# DOWNLOAD PYTHON
-# echo "---> Downloading and extracting Python"
-# python_url=https://s3-external-1.amazonaws.com/heroku-buildpack-python/heroku-20/runtimes/python-3.10.0.tar.gz
-# wget -q -O - "$python_url" | tar -xzf - -C "$pythonlayer"
-
 # MAKE PYTHON AVAILABLE TO THIS SCRIPT
 export PATH="$pythonlayer"/bin:$PATH
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}"$pythonlayer/lib"
-
-# INSTALL PIP
-echo "---> Installing pip"
-python -m ensurepip --upgrade
 
 # INSTALL YAMLLINT
 echo "---> Installing yamllint"
