@@ -17,13 +17,13 @@ mkdir -p "$pythonlayer"
 
 
 # Download and install Miniconda (Python 3.10)
-#miniconda_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-conda_dir="$ENV_DIR/miniconda"
-#mkdir -p "$conda_dir"
-#wget -qO miniconda.sh "$miniconda_url"
-#bash miniconda.sh -b -p "$conda_dir"
+miniconda_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+conda_dir="$ENV_DIR/miniconda3"
+mkdir -p "$conda_dir"
+wget -qO miniconda.sh "$miniconda_url"
+bash miniconda.sh -b -p "$conda_dir"
 export PATH="$conda_dir/bin:$PATH"
-#rm miniconda.sh
+rm miniconda.sh
 
 # CREATE PYTHON ENVIRONMENT
 conda create -y -p "$pythonlayer" python=3.10
