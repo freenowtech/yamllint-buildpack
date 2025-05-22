@@ -25,6 +25,9 @@ wget -q -O - "$python_url" | tar -xzf - -C "$pythonlayer"
 export PATH="$pythonlayer"/bin:$PATH
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}"$pythonlayer/lib"
 
+echo $HOME
+echo ~
+
 # INSTALL PIP
 echo "---> Installing pip"
 python -m ensurepip --upgrade
