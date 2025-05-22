@@ -28,6 +28,8 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}"$pythonlayer/lib"
 echo $HOME
 echo ~
 
+python -m ssl
+
 # INSTALL PIP
 echo "---> Installing pip"
 python -m ensurepip --upgrade
