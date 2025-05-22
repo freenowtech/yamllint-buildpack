@@ -25,10 +25,22 @@ wget -q -O - "$python_url" | tar -xzf - -C "$pythonlayer"
 export PATH="$pythonlayer"/bin:$PATH
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}"$pythonlayer/lib"
 
-echo $HOME
-echo ~
 
-python -m ssl
+wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+tar zxvf openssl-1.1.1g.tar.gz
+cd openssl-1.1.1g
+./config --prefix=/app/openssl --openssldir=/app/openssl no-ssl2
+make
+make test
+make install
+cd ~
+export PATH=$HOME/openssl/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/openssl/lib
+export LC_ALL="en_US.UTF-8"
+export LDFLAGS="-L /app/openssl/lib -Wl,-rpath,/app/openssl/lib"
+which openssl
+
+$pythonlayer/configure --with-openssl=/app/openssl
 
 # INSTALL PIP
 echo "---> Installing pip"
