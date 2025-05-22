@@ -20,8 +20,11 @@ mkdir -p "$pythonlayer"
 miniconda_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 conda_dir="$ENV_DIR/miniconda3"
 mkdir -p "$conda_dir"
+echo "directory created"
 wget -qO miniconda.sh "$miniconda_url"
+echo "miniconda downloaded"
 bash miniconda.sh -b -p "$conda_dir"
+echo "bash done"
 export PATH="$conda_dir/bin:$PATH"
 rm miniconda.sh
 
