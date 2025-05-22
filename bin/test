@@ -31,7 +31,6 @@ tar zxvf openssl-1.1.1g.tar.gz
 cd openssl-1.1.1g
 ./config --prefix=/app/openssl --openssldir=/app/openssl no-ssl2
 make
-make test
 make install
 cd ~
 export PATH=$HOME/openssl/bin:$PATH
